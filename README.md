@@ -1,0 +1,1 @@
+This is a navigation-themed reading cockpit built for momentum and precise tracking. It provides hard telemetry for your reading session without cluttering the screen, rendering text in a low-contrast soft grey to avoid distracting from the book itself.
