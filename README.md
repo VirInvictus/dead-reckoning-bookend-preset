@@ -1,3 +1,32 @@
-<img width="1264" height="1680" alt="Reader_Jingo - Terry Pratchett (8011) epub_p20_2026-07-03_204620" src="https://github.com/user-attachments/assets/73f2291d-1fa5-47da-a78e-3a85ba82b157" />
+# Dead Reckoning
 
-This is a navigation-themed reading cockpit built for momentum and precise tracking. It provides hard telemetry for your reading session without cluttering the screen, rendering text in a low-contrast soft grey to avoid distracting from the book itself.
+A [Bookends](https://github.com/AndyHazz/bookends.koplugin) preset for [KOReader](https://github.com/koreader/koreader): a navigation-themed reading cockpit that surfaces session speed, a finish-date projection, and chapter ETA, with chapter waypoints ticked along the progress bar. Text renders in a soft, low-contrast grey so the telemetry stays out of the way of the book.
+
+<img width="1264" height="1680" alt="Dead Reckoning preset shown on a KOReader page" src="https://github.com/user-attachments/assets/73f2291d-1fa5-47da-a78e-3a85ba82b157" />
+
+## Layout
+
+| Zone | Shows |
+|---|---|
+| Top-left | Book title, series name and number |
+| Top-center | Weekday and date |
+| Top-right | Clock, battery level (with a charging flag and a low-battery warning under 20%) |
+| Bottom-left | Session pages read and pages-per-hour pace |
+| Bottom-right | Chapter pages left and time-to-finish ETA |
+| Bottom-center | Percent of book read, pages left, and projected finish date |
+| Progress bar | Pac-man style bar with a tick for every chapter boundary |
+
+## Requirements
+
+- [KOReader](https://github.com/koreader/koreader)
+- The [Bookends](https://github.com/AndyHazz/bookends.koplugin) plugin
+
+## Installation
+
+Drop `dead-reckoning.lua` into Bookends' preset folder:
+
+```
+<koreader-data-dir>/settings/bookends_presets/
+```
+
+Then open **Bookends → Preset library** in KOReader and select **Dead Reckoning** from the list.
