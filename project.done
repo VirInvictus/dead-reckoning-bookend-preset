@@ -1,0 +1,67 @@
+# project.done: dead-reckoning-bookend-preset
+
+Completed: 2026-09-15 (THE FINAL BLITZ). Commit range 0873cef..project.done
+on main (v1.0.0 release commit: f9c8282), pushed to
+VirInvictus/dead-reckoning-bookend-preset.
+
+## What shipped
+
+- README truth pass: the H4 warning banner is gone; its content now
+  lives in Installation as a bold note naming exactly which settings it
+  means (disable KOReader's native status bar, set the document
+  margins) and stating that the preset's `defaults` margins (top 18,
+  bottom 28, left and right 30) are internal drawing geometry, not
+  values to change. The intro's "soft, low-contrast grey" reworded to
+  "grey ink" (grey = 64 is medium-dark, roughly 7:1).
+- The sibling-standard Lua .gitignore, byte-identical (324 bytes) to
+  both siblings: three-preset set is now uniform.
+- v1.0.0 cut and released: annotated, v-prefixed, message derived from
+  the commit log (dragon-agents v0.1.1 precedent, no patchnotes exists
+  in this repo), heading style matching the kobo sibling's tags
+  (`## vX.Y.Z (date)`), cat-file verified before pushing. GitHub
+  Release created from the tag:
+  https://github.com/VirInvictus/dead-reckoning-bookend-preset/releases/tag/v1.0.0
+
+## Plugin contract: closed from source (2026-09-15)
+
+Every contract item the audit flagged as unverifiable offline was
+verified against the Bookends plugin source (AndyHazz/bookends.koplugin,
+master): the `[if:batt<20]` comparison (documented operators include
+`<`), `[if:charging=yes]` (the `charging` token resolves to the strings
+"yes"/"no", bookends_tokens.lua:1532), all placeholders used by the
+preset (%batt, %batt_icon, %speed, %chap_time_left_eta,
+%book_finish_date, %series_name, %series_num, and the rest),
+`schema_version = 5` (equals Config.SCHEMA_VERSION, bookends_config.lua:12;
+the plugin also migrates per-file schema on load), `style = "pacman"`
+(a first-class bar style in three source files), and the
+`settings/bookends_presets` install path (preset_manager.lua:257
+verbatim).
+
+## Recorded decision: exporter dead weight stays
+
+The exporter-generated dead weight (explicit-empty tables, 7 identical
+disabled progress-bar slots) is LEAVE, per the audit's recommendation:
+the plugin's exporter writes this shape and rewrites it on next save,
+so hand-cleaning buys nothing and risks drift from what the device
+emits. Slot 1 and every non-empty key are intact. Not touched.
+
+## Questions asked and answers (2026-09-15)
+
+1. Cut v1.0.0? -> Tag + Release (recommended option taken).
+2. On-device pass timing? -> Session this week, within the blitz window
+   (by 2026-09-20); checklist handed over.
+3. U+26A1 glyph? -> Check in that same session (no speculative edit).
+
+## Reopen conditions
+
+1. The on-device pass over the three rare-path states: under-20%
+   battery (LOW flag fires), charging (lightning glyph shows while
+   plugged in), and a series book (series name and number render).
+   Plus the U+26A1 tofu check in the same session. Gated and scheduled
+   2026-09-15 for the blitz window; if it has not happened by
+   2026-09-20, it becomes this repo's standing reopen condition. No
+   code change is expected; verification only.
+2. Nothing else. No roadmap exists by design (findings live in the
+   audit's FINAL-REPORT and here); the exporter's shape is
+   load-bearing; docs-only commits do not tag, so v1.0.0 remains the
+   version statement.
